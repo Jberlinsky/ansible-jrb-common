@@ -1,0 +1,4 @@
+newrelic_loglevel: info
+newrelic_logfile: /var/log/newrelic/nrsysmond.log
+newrelic_ssl: "true"
+newrelic_pidfile: /var/run/newrelic/nrsysmond.pid

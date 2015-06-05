@@ -1,0 +1,16 @@
+---
+dependencies:
+  - role: ansible-cron-apt
+  - role: ansible-users
+    ignore_errors: true
+  - role: ansible-sudo
+  - role: ansible-fqdn
+    fqdn: "{{ ec2_tag_Name }}{{ fqdn }}"
+    hostname: "{{ ec2_tag_Name }}"
+  - role: ansible-zookeeper
+    myid: "{{ inventory_hostname }}"
+  # - role: postfix-ses
+    # when: ansible_pkg_mgr == 'apt'
+  - role: ansible-remote-syslog
+  # - role: ansible-newrelic
+

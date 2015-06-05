@@ -1,0 +1,40 @@
+---
+- name: Update apt-get cache
+  apt: update_cache=yes
+  sudo: yes
+
+- name: install git
+  apt: pkg=git state=present
+- name: install pip
+  apt: pkg=python-pip state=present
+- name: install pip
+  yum: pkg=python-pip state=present
+- name: Install boto
+  pip: name=boto state=latest
+- name: Configure boto
+  template: >
+    src=boto.config
+    dest="~/.boto"
+- name: Add host to route53
+  ignore_errors: yes
+  # async: yes
+  route53: >
+    command=create
+    zone={{ fqdn_zone }}
+    record="{{ ec2_tag_Name }}{{ fqdn }}"
+    type=A
+    ttl=7200
+    value="{{ ec2_private_ip_address }}"
+    overwrite=true
+    retry_interval=10
+
+- name: Install ufw
+  apt: name=ufw
+
+- name: Install make tools
+  apt: name=build-essential
+
+- name: Allow ssh through firewall
+  ufw: proto=tcp port=22 rule=allow
+- name: Set other UFW policy
+  ufw: state=enabled direction=incoming policy=deny
