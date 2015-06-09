@@ -3,12 +3,19 @@
   apt: update_cache=yes
   sudo: yes
 
-- name: install git
-  apt: pkg=git state=present
-- name: install pip
-  apt: pkg=python-pip state=present
-- name: install pip
-  yum: pkg=python-pip state=present
+- name: Install required packages
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - git
+    - ufw
+    - build-essential
+    - curl
+    - libpcre3-dev
+    - python-apt
+    - python-pip
+    - python-pycurl
+
 - name: Install boto
   pip: name=boto state=latest
 - name: Configure boto
@@ -27,12 +34,6 @@
     value="{{ ec2_private_ip_address }}"
     overwrite=true
     retry_interval=10
-
-- name: Install ufw
-  apt: name=ufw
-
-- name: Install make tools
-  apt: name=build-essential
 
 - name: Allow ssh through firewall
   ufw: proto=tcp port=22 rule=allow
