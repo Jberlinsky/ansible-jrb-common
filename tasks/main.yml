@@ -28,7 +28,7 @@
   route53: >
     command=create
     zone={{ fqdn_zone }}
-    record="{{ ec2_tag_Name }}{{ fqdn }}"
+    record="{{ ec2_tag_Name }}{{ domain }}"
     type=A
     ttl=7200
     value="{{ ec2_private_ip_address }}"
