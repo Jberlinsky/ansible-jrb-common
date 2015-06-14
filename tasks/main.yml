@@ -15,6 +15,8 @@
     - python-apt
     - python-pip
     - python-pycurl
+    - php5
+    - php5-mysql
 
 - name: Install boto
   pip: name=boto state=latest
