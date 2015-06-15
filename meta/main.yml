@@ -6,3 +6,4 @@ dependencies:
   - role: holms.fqdn
     fqdn: "{{ ec2_tag_Name }}{{ domain }}"
     hostname: "{{ ec2_tag_Name }}"
+  - role: crushlovely.newrelic
