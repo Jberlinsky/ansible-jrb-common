@@ -17,6 +17,7 @@
     - python-pycurl
     - php5
     - php5-mysql
+    - libcurl3-dev
     - php5-curl
 
 - name: Install boto
