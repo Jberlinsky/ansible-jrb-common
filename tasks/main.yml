@@ -17,6 +17,7 @@
     - python-pycurl
     - php5
     - php5-mysql
+    - php5-curl
 
 - name: Install boto
   pip: name=boto state=latest
