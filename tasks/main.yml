@@ -19,6 +19,11 @@
     - php5-mysql
     - libcurl3-dev
     - php5-curl
+    - php5-gd
+    - php5-json
+    - php5-xmlrpc
+    - php5-xsl
+    - php5-mcrypt
 
 - name: Install boto
   pip: name=boto state=latest
