@@ -43,6 +43,7 @@
     value="{{ ec2_private_ip_address }}"
     overwrite=true
     retry_interval=10
+  when: set_dns
 
 - name: Allow ssh through firewall
   ufw: proto=tcp port=22 rule=allow
