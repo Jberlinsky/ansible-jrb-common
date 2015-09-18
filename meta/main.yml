@@ -3,7 +3,4 @@ dependencies:
   - role: tersmitten.cron-apt
   - role: ANXS.generic-users
   - role: franklinkim.sudo
-  - role: holms.fqdn
-    fqdn: "{{ ec2_tag_Name }}{{ domain }}"
-    hostname: "{{ ec2_tag_Name }}"
   - role: crushlovely.newrelic
